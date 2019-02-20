@@ -1,8 +1,11 @@
-export const appReducer = (state, { type, product }) => {
+export const appReducer = (state = {}, { type, product }) => {
   switch (type) {
     case "ADD_PRODUCT":
-      console.log(products);
-      return [...state, products.price:products.price++];
+      const currentQuantitiy = state[product.price] || 0;
+      return {
+        ...state,
+        [product.price]: currentQuantitiy + 1
+      };
 
     default:
       return state;
