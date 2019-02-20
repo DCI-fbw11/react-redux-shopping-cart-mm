@@ -1,6 +1,7 @@
-import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import ProductList from "./components/ProductList";
 
 class App extends Component {
   render() {
@@ -14,11 +15,12 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div className="Component-container">
+          <ProductList />
           {/* Shopping cart and Product list should go here */}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
