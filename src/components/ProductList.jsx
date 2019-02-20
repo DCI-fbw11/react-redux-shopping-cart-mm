@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { addProduct } from "./../modules/actions";
 
 const ProductList = props => {
   console.log(props);
@@ -17,8 +18,6 @@ const ProductList = props => {
           <br />
 
           <button
-            btn
-            btn-danger
             onClick={() => {
               props.addProduct(product);
             }}
@@ -36,4 +35,10 @@ const mapStateToProps = state => {
     products: state.products
   };
 };
-export default connect(mapStateToProps)(ProductList);
+const mapDispatchToProps = dispatch => {
+  addProduct: () => dispatch({ type: "ADD_PRODUCT" });
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductList);

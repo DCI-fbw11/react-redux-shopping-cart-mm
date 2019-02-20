@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import ProductList from "./components/ProductList";
-
+import ShoppinCart from "./components/ShoppinCart";
 class App extends Component {
   render() {
     return (
@@ -16,6 +16,9 @@ class App extends Component {
         </p>
         <div className="Component-container">
           <ProductList />
+          <hr />
+          <ShoppinCart />
+
           {/* Shopping cart and Product list should go here */}
         </div>
       </div>
