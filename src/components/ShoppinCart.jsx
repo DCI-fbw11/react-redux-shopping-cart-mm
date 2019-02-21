@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const ShoppingCart = props => {
-  console.log(props);
+  
 
   const item = Object.values(props.products);
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addProduct } from "./../modules/actions";
 
 const ProductList = props => {
-  console.log(props);
+  
 
   const item = Object.values(props.products);
 
@@ -30,15 +30,19 @@ const ProductList = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    products: state.products
-  };
-};
-const mapDispatchToProps = dispatch => {
-  addProduct: () => dispatch({ type: "ADD_PRODUCT" });
-};
+const mapStateToProps = state => ({
+  
+     products:state.products,
+     cart:state.cart
+  
+});
+const mapDispatchToProps = dispatch => ({
+  addProduct: (product) => dispatch({ type: "ADD_PRODUCT",product })
+});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProductList);
+
+
+  
