@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { checkout, addProduct } from "./../modules/actions";
 
 const ShoppingCart = props => {
-  
-
   const item = Object.values(props.products);
 
   return (
@@ -12,11 +11,9 @@ const ShoppingCart = props => {
       <br />
 
       <button
-        btn
-        btn-danger
-        onClick={() => {
-          props.checkout();
-        }}
+      // onClick={() => {
+      //   props.checkout();
+      // }}
       >
         Checkout
       </button>
@@ -27,14 +24,15 @@ const ShoppingCart = props => {
 const mapStateToProps = state => {
   return {
     products: state.products
+    // cart: state.cart
   };
 };
-const mapDispatchToProps = dispatch => {
-  addProduct: () => dispatch({ type: "ADD_PRODUCT" });
-  // eslint-disable-next-line no-labels
-  checkout: () => dispatch({ type: "CHECKOUT" });
-};
+// const mapDispatchToProps = dispatch => {
+//   addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product });
+//   // eslint-disable-next-line no-labels
+//   // checkout: () => dispatch({ type: "CHECKOUT" });
+// };
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(ShoppingCart);

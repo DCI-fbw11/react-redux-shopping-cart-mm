@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addProduct } from "./../modules/actions";
+// import { addProduct } from "./../modules/actions";
 
 const ProductList = props => {
-  
-
   const item = Object.values(props.products);
 
   return (
@@ -31,18 +29,13 @@ const ProductList = props => {
 };
 
 const mapStateToProps = state => ({
-  
-     products:state.products,
-     cart:state.cart
-  
+  products: state.products
+  // cart:state.cart
 });
 const mapDispatchToProps = dispatch => ({
-  addProduct: (product) => dispatch({ type: "ADD_PRODUCT",product })
+  addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product })
 });
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProductList);
-
-
-  

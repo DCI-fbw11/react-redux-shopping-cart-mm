@@ -1,17 +1,18 @@
-// import {addProduct} from '../modules/actions'
+import { addProduct } from "../modules/actions";
 
-export const appReducer = (state = {}, { type, product }) => {
-      
-  const stuffs =(Object.values(state.products));
+export const appReducer = (state = {}, action) => {
+  // const stuffs =(Object.values(state.products));
   // console.log(stuffs[0].inventory)
-console.log(state)
-  
-  switch (type) {
+
+  switch (action.type) {
     case "ADD_PRODUCT":
+      var newCart = state.cart;
+      newCart.push(action.payload);
+      console.log(state);
       return {
         ...state,
-        inventory:product.inventory--,
-        cart:product
+        inventory: action.payload.inventory--,
+        cart: newCart
       };
 
     default:
