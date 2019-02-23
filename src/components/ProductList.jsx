@@ -1,35 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { addProduct } from "./../modules/actions";
 
-const ProductList = props => {
-  const item = Object.values(props.products);
+class ProductList extends Component {
+  render() {
+    const items = Object.values(this.props.products);
 
-  return (
-    <div>
-      {item.map((product, i) => (
+    return (
+      <div>
         <ul>
-          <li>
-            {" "}
-            {product.title} | {product.price} | {product.inventory}
-          </li>
-          <br />
-
-          <button
-            onClick={() => {
-              props.addProduct(product);
-            }}
-          >
-            Add to cart
-          </button>
+          {items.map((product, i) => (
+            <div>
+              <li key={i}>
+                {product.title} | {product.price} | {product.inventory}
+              </li>
+              <br />
+              <button
+                onClick={() => {
+                  this.props.addProduct(product);
+                }}
+              >
+                Add to cart
+              </button>
+              <br />
+            </div>
+          ))}
         </ul>
-      ))}
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
-  products: state.products
+  products: state.products,
+  inventory: state.inventory
   // cart:state.cart
 });
 const mapDispatchToProps = dispatch => ({
