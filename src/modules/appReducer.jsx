@@ -6,6 +6,7 @@ export const appReducer = (state, action) => {
     case "ADD_PRODUCT":
       var newCart = state.cart;
       newCart.push(action.payload);
+      console.log(state);
       // alert("new product added to cart" + JSON.stringify(state));
       return {
         ...state,

@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class ShoppingCart extends Component {
-  componentWillUpdate() {
-    alert("will update");
-  }
-  componentDidUpdate() {
-    alert("did update");
-  }
   render() {
     return (
       <div>
@@ -18,7 +12,7 @@ class ShoppingCart extends Component {
             // this.props.cart.map(product => {
             //   return <li>1</li>;
             // })
-            <h5>cart</h5>
+            <h5>hi</h5>
           ) : (
             <h5>null</h5>
           )}
@@ -35,14 +29,13 @@ class ShoppingCart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  cart: state.cart,
-  products: state.products
+  cart: state.cart
 });
-// const mapDispatchToProps = dispatch => {
-//   addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product });
-//   // eslint-disable-next-line no-labels
-//   // checkout: () => dispatch({ type: "CHECKOUT" });
-// };
+const mapDispatchToProps = dispatch => {
+  addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product });
+
+  checkout: () => dispatch({ type: "CHECKOUT" });
+};
 export default connect(
   mapStateToProps,
   null

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { addProduct } from "./../modules/actions";
+import { bindActionCreators } from "redux";
+import { addProduct } from "./../modules/actions";
 
 class ProductList extends Component {
   render() {
