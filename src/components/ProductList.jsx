@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 
 class ProductList extends Component {
   addProduct = e => {
@@ -37,11 +38,20 @@ class ProductList extends Component {
   render() {
     const items = Object.values(this.props.products);
     // const cartItems = Object.values(this.props.cart);
+=======
+import { bindActionCreators } from "redux";
+import { addProduct } from "./../modules/actions";
+
+class ProductList extends Component {
+  render() {
+    const items = Object.values(this.props.products);
+>>>>>>> 13bf2670d2c4cf5c2f03637290344eee5ad1bd2e
 
     return (
       <div>
         <ul>
           {items.map((product, i) => (
+<<<<<<< HEAD
             <div key={i} id={product.id}>
               <li>
                 {product.title} | {product.price} |{product.inventory}
@@ -54,6 +64,19 @@ class ProductList extends Component {
                 disabled={product.inventory < 1 ? true : false}
               >
                 click to add
+=======
+            <div>
+              <li key={i}>
+                {product.title} | {product.price} | {product.inventory}
+              </li>
+              <br />
+              <button
+                onClick={() => {
+                  this.props.addProduct(product);
+                }}
+              >
+                Add to cart
+>>>>>>> 13bf2670d2c4cf5c2f03637290344eee5ad1bd2e
               </button>
               <br />
             </div>
@@ -66,8 +89,13 @@ class ProductList extends Component {
 
 const mapStateToProps = state => ({
   products: state.products,
+<<<<<<< HEAD
   cart: state.cart,
   inventory: state.cart.inventory
+=======
+  inventory: state.inventory
+  // cart:state.cart
+>>>>>>> 13bf2670d2c4cf5c2f03637290344eee5ad1bd2e
 });
 const mapDispatchToProps = dispatch => ({
   addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product })

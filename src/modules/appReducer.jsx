@@ -1,4 +1,5 @@
 export const appReducer = (state, action) => {
+<<<<<<< HEAD
   switch (action.type) {
     case "ADD_PRODUCT":
       console.log(action.payload);
@@ -43,6 +44,23 @@ export const appReducer = (state, action) => {
           newCartItem
         ]
       };
+=======
+  // const stuffs =(Object.values(state.products));
+  // console.log(stuffs[0].inventory)
+
+  switch (action.type) {
+    case "ADD_PRODUCT":
+      var newCart = state.cart;
+      newCart.push(action.payload);
+      console.log(state);
+      // alert("new product added to cart" + JSON.stringify(state));
+      return {
+        ...state,
+        inventory: action.payload.inventory--,
+        cart: newCart
+      };
+
+>>>>>>> 13bf2670d2c4cf5c2f03637290344eee5ad1bd2e
     default:
       return state;
   }
