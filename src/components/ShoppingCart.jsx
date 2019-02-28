@@ -1,22 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { addProduct } from "./../modules/actions";
 
 class ShoppingCart extends Component {
   render() {
+    const cart = Object.values(this.props.cart);
+    const totalApadate = cart.map(x => x.price * x.inventory);
+    const reducer = (a, b) => a + b;
     return (
       <div>
-        <h4>Total:$</h4>
+        <h4>
+          Total:${totalApadate.length > 0 ? totalApadate.reduce(reducer) : 0}
+        </h4>
         <br />
         <div>
-          {this.props.cart ? (
-            // this.props.cart.map(product => {
-            //   return <li>1</li>;
-            // })
-            <h5>hi</h5>
-          ) : (
-            <h5>null</h5>
-          )}
+          <ul>
+            <div>
+              {Object.values(this.props.cart).map((product, i) => (
+                <li key={i}>
+                  {product.title}||{product.price}||{product.inventory}
+                  <br />
+                  <button
+                    onClick={() => {
+                      this.props.removeOne(product.id);
+                    }}
+                  >
+                    Remove Item
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.props.removeAll(product.id);
+                    }}
+                  >
+                    Remove All
+                  </button>
+                </li>
+              ))}
+            </div>
+          </ul>
         </div>
+        <br />
         <button
           onClick={() => {
             this.props.checkout();
@@ -29,14 +52,18 @@ class ShoppingCart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  cart: state.cart
+  products: state.products,
+  cart: state.cart,
+  total: state.total
 });
-const mapDispatchToProps = dispatch => {
-  addProduct: product => dispatch({ type: "ADD_PRODUCT", payload: product });
+const mapDispatchToProps = dispatch => ({
+  removeAll: product => dispatch({ type: "REMOVE_ALL", payload: product }),
+  removeOne: product => dispatch({ type: "REMOVE_ONE", payload: product }),
+  totalApadate: product => dispatch({ type: "TOTAL_APDATE", payload: product }),
 
-  checkout: () => dispatch({ type: "CHECKOUT" });
-};
+  checkout: product => dispatch({ type: "CHECKOUT", payload: product })
+});
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ShoppingCart);

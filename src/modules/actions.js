@@ -24,3 +24,9 @@ export function removeAll(product) {
     product
   };
 }
+export function totalApadate(product) {
+  return {
+    type: "TOTAL-APDATE",
+    product
+  };
+}
